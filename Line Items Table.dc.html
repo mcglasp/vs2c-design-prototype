@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Montserrat', system-ui, sans-serif; background: #EDF1F2; color: #1F2D35; }
+  a { color: #0E9384; text-decoration: none; }
+  a:hover { color: #0B7568; }
+  input, select, button, textarea { font-family: inherit; }
+  input:focus, select:focus, textarea:focus { outline: none; }
+  ::placeholder { color: #9AA8AE; }
+</style>
+</helmet>
+<div style="min-height:100vh; padding:28px; display:flex; justify-content:center;">
+  <div style="width:100%; max-width:1360px; display:flex; gap:20px; align-items:stretch;">
+
+    <!-- MAIN PANEL -->
+    <div style="flex:1 1 auto; min-width:0; background:#fff; border-radius:18px; box-shadow:0 1px 2px rgba(20,45,60,.04), 0 12px 32px rgba(20,45,60,.07); display:flex; flex-direction:column; overflow:hidden;">
+
+      <!-- Header -->
+      <div style="padding:26px 30px 20px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:baseline; gap:10px; flex:1 1 auto;">
+          <span style="font-size:24px; font-weight:700; letter-spacing:-.02em;">{{ itemCount }}</span>
+          <span style="font-size:15px; color:#6A7A82; font-weight:600;">items found</span>
+        </div>
+        <label style="position:relative;">
+          <span style="position:absolute; top:-8px; left:12px; background:#fff; padding:0 5px; font-size:10.5px; font-weight:600; color:#8B9AA1; text-transform:uppercase; letter-spacing:.06em;">Region</span>
+          <select style="appearance:none; -webkit-appearance:none; height:44px; padding:0 40px 0 14px; border:1.5px solid #DCE3E5; border-radius:11px; font-size:14px; font-weight:600; color:#1F2D35; background:#fff url('data:image/svg+xml;utf8,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 fill=%22none%22 stroke=%22%236A7A82%22 stroke-width=%222%22&gt;&lt;path d=%22M3 5l4 4 4-4%22/&gt;&lt;/svg&gt;') no-repeat right 14px center; cursor:pointer;">
+            <option>US</option><option>EU</option><option>UK</option><option>APAC</option>
+          </select>
+        </label>
+        <div style="display:flex; align-items:center; gap:10px; padding:0 4px 0 18px; border-left:1.5px solid #EDF1F2;">
+          <span style="font-size:13px; color:#8B9AA1; font-weight:600; text-transform:uppercase; letter-spacing:.05em;">Total</span>
+          <span style="font-size:22px; font-weight:700; letter-spacing:-.02em;">{{ total }}</span>
+          <span style="font-size:13px; font-weight:600; color:#8B9AA1; background:#F4F6F7; padding:6px 10px; border-radius:9px;">EUR</span>
+        </div>
+      </div>
+
+      <!-- Column key -->
+      <div style="padding:0 30px 12px; display:flex; gap:16px; align-items:center;">
+        <div style="flex:1 1 auto; font-size:11px; font-weight:600; color:#9AA8AE; text-transform:uppercase; letter-spacing:.07em;">Line items</div>
+        <div style="font-size:11.5px; color:#8B9AA1; font-weight:600;">Tap a document icon to view its source PDF</div>
+      </div>
+
+      <!-- Cards -->
+      <div style="flex:1 1 auto; overflow:auto; padding:2px 22px 8px;">
+        <sc-for list="{{ rows }}" as="row" hint-placeholder-count="2">
+          <div style="position:relative; margin:0 8px 14px; background:#fff; border:1.5px solid {{ row.borderColor }}; border-radius:14px; box-shadow:{{ row.shadow }}; transition:border-color .15s, box-shadow .15s;">
+            <div style="display:flex; gap:22px; align-items:flex-start; padding:18px 16px 18px 20px; flex-wrap:wrap;">
+
+              <!-- Main info -->
+              <div style="flex:1 1 250px; min-width:0; display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; align-items:flex-start; gap:10px;">
+                  <div style="flex-shrink:0; width:26px; height:26px; border-radius:8px; background:linear-gradient(135deg,#0E9384,#12B3A0); display:flex; align-items:center; justify-content:center; margin-top:1px;" title="AI-extracted">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l1.6 5.2L19 9l-5.4 1.8L12 16l-1.6-5.2L5 9l5.4-1.8z"></path><path d="M18.5 14l.7 2.2 2.3.8-2.3.8-.7 2.2-.7-2.2-2.3-.8 2.3-.8z" opacity=".85"></path></svg>
+                  </div>
+                  <input value="{{ row.name }}" onChange="{{ row.onName }}" style="flex:1 1 auto; min-width:0; border:1.5px solid transparent; border-radius:8px; padding:4px 8px; margin:-4px -8px; font-size:15.5px; font-weight:700; letter-spacing:-.01em; color:#1F2D35; background:transparent; transition:.12s;" style-hover="background:#F4F6F7;" style-focus="border-color:#0E9384; background:#fff;">
+                </div>
+                <div style="display:flex; align-items:center; gap:8px; padding-left:36px; flex-wrap:wrap;">
+                  <span style="position:relative; display:inline-flex; align-items:center;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; left:11px; pointer-events:none;"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                    <select value="{{ row.category }}" onChange="{{ row.onCategory }}" title="Change category" style="appearance:none; -webkit-appearance:none; background:#E9F5F3; color:#0B7568; font-size:12.5px; font-weight:600; padding:5px 30px 5px 30px; border:1.5px solid #C9E7E2; border-radius:999px; cursor:pointer; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 fill=%22none%22 stroke=%22%230B7568%22 stroke-width=%222%22><path d=%22M2 4l4 4 4-4%22/></svg>'); background-repeat:no-repeat; background-position:right 11px center; transition:.12s;" style-hover="background-color:#D8ECE9; border-color:#0E9384;" style-focus="border-color:#0E9384;">
+                      <sc-for list="{{ row.categoryOptions }}" as="opt" hint-placeholder-count="4"><option>{{ opt }}</option></sc-for>
+                    </select>
+                  </span>
+                  <sc-if value="{{ row.hasCode }}" hint-placeholder-val="{{ false }}">
+                    
+                  </sc-if>
+                </div>
+
+                <!-- Description toggle -->
+                <div style="padding-left:36px;">
+                  <sc-if value="{{ row.generating }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#0E9384;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E9384" stroke-width="2.5" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.7s" repeatCount="indefinite"></animateTransform></path></svg>
+                      Generating description…
+                    </span>
+                  </sc-if>
+                  <sc-if value="{{ row.showGenerate }}" hint-placeholder-val="{{ true }}">
+                    <button onClick="{{ row.onGenerate }}" style="display:inline-flex; align-items:center; gap:7px; background:none; border:none; padding:0; cursor:pointer; font-size:13px; font-weight:600; color:#0E9384;" style-hover="color:#0B7568;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="#0E9384"><path d="M12 2l1.4 4.6L18 8l-4.6 1.4L12 14l-1.4-4.6L6 8l4.6-1.4z"></path></svg>
+                      Generate description
+                    </button>
+                  </sc-if>
+                  <sc-if value="{{ row.hasDesc }}" hint-placeholder-val="{{ false }}">
+                    <div>
+                      <button onClick="{{ row.onToggleDesc }}" style="display:inline-flex; align-items:center; gap:6px; background:none; border:none; padding:0; cursor:pointer; font-size:12.5px; font-weight:600; color:#6A7A82;" style-hover="color:#1F2D35;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ row.chevron }}deg); transition:.15s;"><path d="M9 6l6 6-6 6"></path></svg>
+                        Description
+                      </button>
+                      <sc-if value="{{ row.expanded }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin-top:9px; background:#F7FAFA; border:1px solid #E7EEEE; border-radius:10px; padding:12px 14px;">
+                          <textarea ref="{{ row.descRef }}" value="{{ row.description }}" onChange="{{ row.onDesc }}" onInput="{{ row.onDescInput }}" style="display:block; width:100%; border:none; background:transparent; resize:none; overflow:hidden; white-space:pre-wrap; word-break:break-word; font-size:13.5px; line-height:1.6; color:#3C4C54; font-weight:500;"></textarea>
+                          <div style="display:flex; align-items:center; gap:6px; margin-top:6px; font-size:11px; color:#0E9384; font-weight:600;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#0E9384"><path d="M12 2l1.4 4.6L18 8l-4.6 1.4L12 14l-1.4-4.6L6 8l4.6-1.4z"></path></svg>
+                            AI generated · editable
+                          </div>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+
+              <!-- Metrics -->
+              <div style="flex:0 1 auto; display:flex; gap:22px; flex-wrap:wrap;">
+                <label style="display:flex; flex-direction:column; gap:5px; width:78px;">
+                  <span style="font-size:10.5px; font-weight:600; color:#9AA8AE; text-transform:uppercase; letter-spacing:.06em;">Qty</span>
+                  <input value="{{ row.qty }}" onChange="{{ row.onQty }}" inputmode="decimal" style="width:100%; border:1.5px solid #E4E9EB; border-radius:9px; padding:8px 10px; font-size:14px; font-weight:600; color:#1F2D35;" style-hover="border-color:#CDD6D9;" style-focus="border-color:#0E9384;">
+                </label>
+                <label style="display:flex; flex-direction:column; gap:5px; width:112px;">
+                  <span style="font-size:10.5px; font-weight:600; color:#9AA8AE; text-transform:uppercase; letter-spacing:.06em;">Unit price</span>
+                  <div style="position:relative;">
+                    <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:13px; color:#9AA8AE; font-weight:600;">€</span>
+                    <input value="{{ row.price }}" onChange="{{ row.onPrice }}" inputmode="decimal" style="width:100%; border:1.5px solid #E4E9EB; border-radius:9px; padding:8px 10px 8px 22px; font-size:14px; font-weight:600; color:#1F2D35;" style-hover="border-color:#CDD6D9;" style-focus="border-color:#0E9384;">
+                  </div>
+                </label>
+                <label style="display:flex; flex-direction:column; gap:5px; width:118px;">
+                  <span style="font-size:10.5px; font-weight:600; color:#9AA8AE; text-transform:uppercase; letter-spacing:.06em;">UOM</span>
+                  <select value="{{ row.uom }}" onChange="{{ row.onUom }}" style="appearance:none; -webkit-appearance:none; width:100%; border:1.5px solid #E4E9EB; border-radius:9px; padding:8px 30px 8px 10px; font-size:14px; font-weight:600; color:#1F2D35; background:#fff url('data:image/svg+xml;utf8,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 fill=%22none%22 stroke=%22%236A7A82%22 stroke-width=%222%22&gt;&lt;path d=%22M2 4l4 4 4-4%22/&gt;&lt;/svg&gt;') no-repeat right 10px center; cursor:pointer;" style-hover="border-color:#CDD6D9;" style-focus="border-color:#0E9384;">
+                    <option>Each</option><option>Bottle</option><option>Box</option><option>Case</option><option>Pack</option><option>Kg</option><option>Litre</option><option>Unit</option>
+                  </select>
+                </label>
+                <label style="display:flex; flex-direction:column; gap:5px; width:96px;">
+                  <span style="font-size:10.5px; font-weight:600; color:#9AA8AE; text-transform:uppercase; letter-spacing:.06em;">Line total</span>
+                  <div style="padding:8px 0; font-size:14px; font-weight:700; color:#15374A; letter-spacing:-.01em;">{{ row.lineTotal }}</div>
+                </label>
+              </div>
+
+              <!-- Actions -->
+              <div style="flex:0 0 auto; display:flex; align-items:center; gap:4px; position:relative;">
+                <button onClick="{{ row.onView }}" title="View source PDF" style="width:36px; height:36px; border-radius:10px; border:1.5px solid {{ row.viewBorder }}; background:{{ row.viewBg }}; display:flex; align-items:center; justify-content:center; cursor:pointer; color:{{ row.viewIcon }}; transition:.12s;" style-hover="border-color:#0E9384; color:#0E9384;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6M9 17h4"></path></svg>
+                </button>
+                <button onClick="{{ row.onMenu }}" title="More actions" style="width:36px; height:36px; border-radius:10px; border:1.5px solid transparent; background:none; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#8B9AA1; transition:.12s;" style-hover="background:#F1F5F5; color:#1F2D35;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.7"></circle><circle cx="12" cy="12" r="1.7"></circle><circle cx="12" cy="19" r="1.7"></circle></svg>
+                </button>
+                <sc-if value="{{ row.menuOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; top:42px; right:0; z-index:30; background:#fff; border:1px solid #E4E9EB; border-radius:12px; box-shadow:0 12px 30px rgba(20,45,60,.16); padding:6px; min-width:172px;">
+                    <button onClick="{{ row.onView }}" style="display:flex; width:100%; align-items:center; gap:10px; padding:9px 10px; border:none; background:none; border-radius:8px; cursor:pointer; font-size:13.5px; font-weight:600; color:#1F2D35;" style-hover="background:#F4F6F7;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6A7A82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                      View source
+                    </button>
+                    <button onClick="{{ row.onDuplicate }}" style="display:flex; width:100%; align-items:center; gap:10px; padding:9px 10px; border:none; background:none; border-radius:8px; cursor:pointer; font-size:13.5px; font-weight:600; color:#1F2D35;" style-hover="background:#F4F6F7;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6A7A82" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Duplicate
+                    </button>
+                    <div style="height:1px; background:#EDF1F2; margin:5px 8px;"></div>
+                    <button onClick="{{ row.onDelete }}" style="display:flex; width:100%; align-items:center; gap:10px; padding:9px 10px; border:none; background:none; border-radius:8px; cursor:pointer; font-size:13.5px; font-weight:600; color:#E5484D;" style-hover="background:#FDECEC;">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
+                      Delete
+                    </button>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+
+        <!-- Add row -->
+        <div style="margin:2px 8px 6px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px; border:1.5px dashed #D6DFE1; border-radius:14px;">
+          <span style="font-size:13.5px; font-weight:600; color:#6A7A82;">Add another line item?</span>
+          <button style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #15374A; color:#15374A; font-size:13.5px; font-weight:600; padding:9px 16px; border-radius:10px; cursor:pointer;" style-hover="background:#15374A; color:#fff;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+            Manually
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div style="border-top:1.5px solid #EDF1F2; padding:16px 30px; display:flex; align-items:center; gap:12px; justify-content:flex-end;">
+        <button style="background:#fff; border:1.5px solid #DCE3E5; color:#3C4C54; font-size:14px; font-weight:600; padding:11px 24px; border-radius:11px; cursor:pointer;" style-hover="border-color:#B7C2C6;">Cancel</button>
+        <button style="background:#15374A; border:1.5px solid #15374A; color:#fff; font-size:14px; font-weight:600; padding:11px 30px; border-radius:11px; cursor:pointer;" style-hover="background:#0E2735;">Confirm</button>
+      </div>
+    </div>
+
+    <!-- SIDE PANEL -->
+    <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:0 0 440px; max-width:440px; align-self:flex-start; position:sticky; top:28px; max-height:calc(100vh - 56px); background:#fff; border-radius:18px; box-shadow:0 1px 2px rgba(20,45,60,.04), 0 12px 32px rgba(20,45,60,.07); display:flex; flex-direction:column; overflow:hidden;">
+        <div style="padding:20px 22px; border-bottom:1.5px solid #EDF1F2; display:flex; align-items:center; gap:12px;">
+          <div style="width:38px; height:38px; border-radius:10px; background:#FDECEC; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#E5484D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg>
+          </div>
+          <div style="flex:1 1 auto; min-width:0;">
+            <div style="font-size:14.5px; font-weight:600; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ activeDoc }}</div>
+            <div style="font-size:11.5px; color:#8B9AA1; font-weight:600;">Source document · {{ activePageLabel }}</div>
+          </div>
+          <button onClick="{{ onClosePanel }}" title="Close" style="width:34px; height:34px; border-radius:9px; border:none; background:#F4F6F7; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#6A7A82;" style-hover="background:#EAEEEF; color:#1F2D35;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+        <div style="flex:1 1 auto; min-height:0; overflow-y:auto; background:#F1F4F5; padding:20px;">
+          <div style="background:#fff; border:1px solid #E4E9EB; border-radius:6px; box-shadow:0 6px 20px rgba(20,45,60,.1); padding:34px 30px; font-size:12px; color:#3C4C54;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:22px; border-bottom:2px solid #15374A;">
+              <div>
+                <div style="font-size:19px; font-weight:700; color:#15374A; letter-spacing:-.01em;">INVOICE</div>
+                <div style="font-size:11px; color:#8B9AA1; margin-top:3px;">No. {{ activeInvoiceNo }}</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:600; color:#15374A;">{{ activeVendor }}</div>
+                <div style="color:#8B9AA1; font-size:10.5px; margin-top:2px; line-height:1.5;">VAT DE-118 4472<br>Invoice date 04 Jul 2026</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:24px; margin:22px 0 20px;">
+              <div style="flex:1;"><div style="font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:#9AA8AE; font-weight:600; margin-bottom:5px;">Billed to</div><div style="line-height:1.55;">Simfoni Procurement<br>1 Market Street<br>San Francisco, CA</div></div>
+              <div style="flex:1;"><div style="font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:#9AA8AE; font-weight:600; margin-bottom:5px;">Terms</div><div style="line-height:1.55;">Net 30<br>PO #4471-2026<br>Currency EUR</div></div>
+            </div>
+            <div style="border:1px solid #EDF1F2; border-radius:6px; overflow:hidden;">
+              <div style="display:flex; background:#F4F6F7; padding:9px 12px; font-size:9.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#8B9AA1;">
+                <div style="flex:1;">Description</div><div style="width:34px; text-align:center;">Qty</div><div style="width:70px; text-align:right;">Amount</div>
+              </div>
+              <div style="display:flex; padding:11px 12px; border-top:1px solid #EDF1F2; align-items:center;">
+                <div style="flex:1; font-weight:600; color:#1F2D35;">{{ activeName }}</div><div style="width:34px; text-align:center;">{{ activeQty }}</div><div style="width:70px; text-align:right; font-weight:600;">€{{ activePrice }}</div>
+              </div>
+              <div style="display:flex; padding:11px 12px; border-top:1px solid #EDF1F2; color:#9AA8AE;">
+                <div style="flex:1;">Handling &amp; processing</div><div style="width:34px; text-align:center;">1</div><div style="width:70px; text-align:right;">€0.00</div>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:flex-end; margin-top:16px;">
+              <div style="width:180px;">
+                <div style="display:flex; justify-content:space-between; padding:5px 0; color:#8B9AA1;"><span>Subtotal</span><span>€{{ activePrice }}</span></div>
+                <div style="display:flex; justify-content:space-between; padding:5px 0; color:#8B9AA1;"><span>VAT (0%)</span><span>€0.00</span></div>
+                <div style="display:flex; justify-content:space-between; padding:9px 0; margin-top:5px; border-top:2px solid #15374A; font-weight:600; color:#15374A; font-size:14px;"><span>Total</span><span>€{{ activePrice }}</span></div>
+              </div>
+            </div>
+            <div style="margin-top:26px; padding-top:16px; border-top:1px solid #EDF1F2; font-size:10px; color:#B0BBC0; text-align:center;">Continued on page 2 · Terms &amp; conditions</div>
+          </div>
+          <sc-if value="{{ activeMultiPage }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:20px; background:#fff; border:1px solid #E4E9EB; border-radius:6px; box-shadow:0 6px 20px rgba(20,45,60,.1); padding:34px 30px; font-size:12px; color:#3C4C54;">
+              <div style="font-size:13px; font-weight:700; color:#15374A; padding-bottom:14px; border-bottom:2px solid #15374A;">Terms &amp; Conditions</div>
+              <div style="line-height:1.7; color:#6A7A82; margin-top:16px;">
+                <p style="margin:0 0 12px;">1. Payment is due within 30 days of the invoice date. Late payments accrue interest at 4% per annum above the applicable base rate.</p>
+                <p style="margin:0 0 12px;">2. Goods remain the property of the supplier until paid in full. Title transfers on receipt of cleared funds.</p>
+                <p style="margin:0 0 12px;">3. Refurbished items are supplied without manufacturer warranty. A 14-day return window applies for functional defects only.</p>
+                <p style="margin:0 0 12px;">4. Delivery estimates are indicative and not guaranteed. Risk passes to the buyer on dispatch.</p>
+                <p style="margin:0;">5. Any dispute shall be governed by the laws of the Federal Republic of Germany.</p>
+              </div>
+              <div style="margin-top:26px; padding-top:16px; border-top:1px solid #EDF1F2; font-size:10px; color:#B0BBC0; text-align:center;">Page 2 of 2 · {{ activeVendor }}</div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:14px 22px; border-top:1.5px solid #EDF1F2; display:flex; gap:10px;">
+          <button style="flex:1; background:#F4F6F7; border:none; color:#3C4C54; font-size:13px; font-weight:600; padding:10px; border-radius:10px; cursor:pointer;" style-hover="background:#EAEEEF;">Download</button>
+          <button style="flex:1; background:#E9F5F3; border:none; color:#0B7568; font-size:13px; font-weight:600; padding:10px; border-radius:10px; cursor:pointer;" style-hover="background:#D8ECE9;">Re-extract</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- Menu backdrop -->
+  <sc-if value="{{ menuBackdrop }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseMenu }}" style="position:fixed; inset:0; z-index:20;"></div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    panelOpen: false,
+    activeId: null,
+    menuOpenId: null,
+    items: [
+      { id: 1, name: 'Einfache Fahrt Berlin Hbf → München', category: 'Travel', code: '', qty: '1', price: '995.88', uom: 'Each',
+        vendor: 'Deutsche Bahn AG', invoiceNo: 'DB-2026-0471', doc: 'DB_ticket_berlin_muc.pdf',
+        description: '', expanded: false, generating: false },
+      { id: 2, name: 'iPhone, Refurbished, Model 16, 2TB Storage, No Warranty', category: 'Information Technology', code: '3534', qty: '1', price: '0', uom: 'Bottle',
+        vendor: 'ReCommerce GmbH', invoiceNo: 'RC-88213', doc: 'recommerce_invoice_88213.pdf', pages: 2,
+        description: '', expanded: false, generating: false },
+    ],
+  };
+
+  fmt(n) {
+    const v = Number(n);
+    if (!isFinite(v)) return '0.00';
+    return v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  set(id, patch) {
+    this.setState(s => ({ items: s.items.map(it => it.id === id ? { ...it, ...patch } : it) }));
+  }
+
+  generate(id) {
+    this.set(id, { generating: true, menuOpenId: null });
+    const texts = {
+      1: 'One-way second-class rail journey from Berlin Hauptbahnhof to München Hauptbahnhof. Flexible fare, seat reservation included. Estimated travel time 4h 12m via ICE high-speed service.',
+      2: 'Refurbished Apple iPhone Model 16 with 2TB storage capacity. Graded fully functional; supplied without manufacturer warranty. Original accessories not guaranteed. Unlocked for all carriers.',
+    };
+    setTimeout(() => {
+      this.set(id, { generating: false, description: texts[id] || 'Auto-generated product description based on the line item details.', expanded: true });
+    }, 900);
+  }
+
+  renderVals() {
+    const { items, panelOpen, activeId, menuOpenId } = this.state;
+    const active = items.find(i => i.id === activeId) || items[0];
+    let total = 0;
+    items.forEach(it => { total += (Number(it.qty) || 0) * (Number(it.price) || 0); });
+
+    const rows = items.map(it => {
+      const isActive = panelOpen && it.id === activeId;
+      const lineTotal = (Number(it.qty) || 0) * (Number(it.price) || 0);
+      return {
+        id: it.id,
+        name: it.name,
+        category: it.category,
+        categoryOptions: ['Travel', 'Information Technology', 'Office Supplies', 'Professional Services', 'Facilities', 'Marketing', 'Logistics', 'Utilities'].includes(it.category) ? ['Travel', 'Information Technology', 'Office Supplies', 'Professional Services', 'Facilities', 'Marketing', 'Logistics', 'Utilities'] : [it.category, 'Travel', 'Information Technology', 'Office Supplies', 'Professional Services', 'Facilities', 'Marketing', 'Logistics', 'Utilities'],
+        onCategory: (e) => this.set(it.id, { category: e.target.value }),
+        code: it.code ? it.code + ' · category code' : '',
+        hasCode: !!it.code,
+        qty: it.qty,
+        price: it.price,
+        uom: it.uom,
+        lineTotal: '€' + this.fmt(lineTotal),
+        description: it.description,
+        expanded: it.expanded,
+        generating: it.generating,
+        hasDesc: !!it.description && !it.generating,
+        showGenerate: !it.description && !it.generating,
+        chevron: it.expanded ? 90 : 0,
+        menuOpen: menuOpenId === it.id,
+        borderColor: isActive ? '#0E9384' : '#EAEFF0',
+        shadow: isActive ? '0 4px 16px rgba(14,147,132,.15)' : '0 1px 2px rgba(20,45,60,.05)',
+        viewBg: isActive ? '#E9F5F3' : '#fff',
+        viewBorder: isActive ? '#0E9384' : '#E4E9EB',
+        viewIcon: isActive ? '#0B7568' : '#8B9AA1',
+        onName: (e) => this.set(it.id, { name: e.target.value }),
+        onQty: (e) => this.set(it.id, { qty: e.target.value }),
+        onPrice: (e) => this.set(it.id, { price: e.target.value }),
+        onUom: (e) => this.set(it.id, { uom: e.target.value }),
+        onDesc: (e) => this.set(it.id, { description: e.target.value }),
+        descRef: (el) => { if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } },
+        onDescInput: (e) => { const el = e.target; el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; },
+        onToggleDesc: () => this.set(it.id, { expanded: !it.expanded }),
+        onGenerate: () => this.generate(it.id),
+        onMenu: () => this.setState(s => ({ menuOpenId: s.menuOpenId === it.id ? null : it.id })),
+        onView: () => this.setState({ panelOpen: true, activeId: it.id, menuOpenId: null }),
+        onDuplicate: () => this.setState(s => {
+          const src = s.items.find(x => x.id === it.id);
+          const nid = Math.max(...s.items.map(x => x.id)) + 1;
+          const idx = s.items.findIndex(x => x.id === it.id);
+          const copy = { ...src, id: nid, expanded: false };
+          const arr = [...s.items]; arr.splice(idx + 1, 0, copy);
+          return { items: arr, menuOpenId: null };
+        }),
+        onDelete: () => this.setState(s => {
+          const arr = s.items.filter(x => x.id !== it.id);
+          return { items: arr, menuOpenId: null, panelOpen: s.activeId === it.id ? false : s.panelOpen };
+        }),
+      };
+    });
+
+    return {
+      rows,
+      itemCount: items.length,
+      total: this.fmt(total),
+      panelOpen,
+      menuBackdrop: menuOpenId !== null,
+      onCloseMenu: () => this.setState({ menuOpenId: null }),
+      onClosePanel: () => this.setState({ panelOpen: false }),
+      activeDoc: active ? active.doc : '',
+      activeName: active ? active.name : '',
+      activeVendor: active ? active.vendor : '',
+      activeInvoiceNo: active ? active.invoiceNo : '',
+      activeQty: active ? active.qty : '',
+      activePrice: active ? this.fmt(active.price) : '',
+      activeMultiPage: active ? (active.pages || 1) > 1 : false,
+      activePageLabel: active ? ((active.pages || 1) > 1 ? 'Page 1 of ' + active.pages : 'Page 1 of 1') : 'Page 1 of 1',
+    };
+  }
+}
+</script>
+</body>
+</html>
