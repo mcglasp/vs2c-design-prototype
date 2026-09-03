@@ -4,7 +4,7 @@
   gap: 7px;
   cursor: pointer;
   border-radius: var(--radius-input);
-  font-weight: 600;
+  font-weight: 500;
   transition:
     background var(--duration-color) var(--ease-standard),
     border-color var(--duration-color) var(--ease-standard),

@@ -29,14 +29,14 @@
 
 .itemCount {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .itemCountLabel {
   font-size: 15px;
   color: var(--color-text-secondary);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .regionField {
@@ -50,7 +50,7 @@
   background: var(--color-white);
   padding: 0 5px;
   font-size: 10.5px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -67,20 +67,20 @@
 .totalLabel {
   font-size: 13px;
   color: var(--color-text-tertiary);
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .totalValue {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .currencyPill {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-tertiary);
   background: var(--color-neutral-fill);
   padding: 6px 10px;
@@ -98,7 +98,7 @@
 .columnKeyLabel {
   flex: 1 1 auto;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-label);
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -107,7 +107,7 @@
 .columnKeyHint {
   font-size: 11.5px;
   color: var(--color-text-tertiary);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Card list */
@@ -130,7 +130,7 @@
 
 .addRowLabel {
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-secondary);
 }
 

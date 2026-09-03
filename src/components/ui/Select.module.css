@@ -4,7 +4,7 @@
   cursor: pointer;
   background-repeat: no-repeat;
   color: var(--color-ink);
-  font-weight: 600;
+  font-weight: 500;
   transition:
     border-color var(--duration-color) var(--ease-standard),
     background-color var(--duration-color) var(--ease-standard);

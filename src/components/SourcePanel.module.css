@@ -70,7 +70,7 @@
 
 .filename {
   font-size: 14.5px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
   overflow: hidden;
@@ -80,7 +80,7 @@
 .subline {
   font-size: 11.5px;
   color: var(--color-text-tertiary);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .closeButton {
