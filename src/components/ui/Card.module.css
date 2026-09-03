@@ -1,0 +1,26 @@
+.card {
+  background: var(--color-white);
+}
+
+.panel {
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.item {
+  position: relative;
+  border-radius: var(--radius-card);
+  border: 1.5px solid var(--color-card-border);
+  box-shadow: var(--shadow-card-rest);
+  transition:
+    border-color var(--duration-color) var(--ease-standard),
+    box-shadow var(--duration-color) var(--ease-standard);
+}
+
+.itemActive {
+  border-color: var(--color-teal);
+  box-shadow: var(--shadow-card-active);
+}

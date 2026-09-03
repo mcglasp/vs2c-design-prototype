@@ -1,0 +1,58 @@
+.input {
+  width: 100%;
+  color: var(--color-ink);
+  background: transparent;
+  transition:
+    border-color var(--duration-color) var(--ease-standard),
+    background var(--duration-color) var(--ease-standard);
+}
+
+.bordered {
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.bordered:hover {
+  border-color: var(--color-input-border-hover);
+}
+.bordered:focus {
+  border-color: var(--color-teal);
+}
+
+.borderless {
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  margin: -4px -8px;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.borderless:hover {
+  background: var(--color-neutral-fill);
+}
+.borderless:focus {
+  border-color: var(--color-teal);
+  background: var(--color-white);
+}
+
+.prefixWrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.prefix {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-label);
+  pointer-events: none;
+}
+.withPrefix {
+  padding-left: 22px;
+}
