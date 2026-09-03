@@ -1,0 +1,151 @@
+.container {
+  width: 100%;
+  max-width: 1360px;
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.mainPanel {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Header */
+.header {
+  padding: 26px 30px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.itemCountGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex: 1 1 auto;
+}
+
+.itemCount {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.itemCountLabel {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.regionField {
+  position: relative;
+}
+
+.regionLabel {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  background: var(--color-white);
+  padding: 0 5px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.totalGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px 0 18px;
+  border-left: 1.5px solid var(--color-page-bg);
+}
+
+.totalLabel {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.totalValue {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.currencyPill {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  background: var(--color-neutral-fill);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+}
+
+/* Column key */
+.columnKey {
+  padding: 0 30px 12px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.columnKeyLabel {
+  flex: 1 1 auto;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.columnKeyHint {
+  font-size: 11.5px;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+/* Card list */
+.cardList {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 2px 22px 8px;
+}
+
+.addRow {
+  margin: 2px 8px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1.5px dashed var(--color-dashed-border);
+  border-radius: var(--radius-card);
+}
+
+.addRowLabel {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+/* Footer */
+.footer {
+  border-top: 1.5px solid var(--color-page-bg);
+  padding: 16px 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.menuBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}

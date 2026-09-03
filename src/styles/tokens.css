@@ -1,0 +1,75 @@
+/*
+ * Design tokens for the line-items review screen.
+ *
+ * Colors marked "Simfoni" replace the prototype's literal teal hex values
+ * per the design handoff: the Simfoni design system is authoritative where
+ * it and the prototype differ. All other values are taken directly from
+ * the prototype, which the handoff treats as final for anything the design
+ * system doesn't already define.
+ */
+:root {
+  /* Text */
+  --color-ink: #1f2d35;
+  --color-body: #3c4c54;
+  --color-text-secondary: #6a7a82;
+  --color-text-tertiary: #8b9aa1;
+  --color-text-label: #9aa8ae;
+
+  /* Navy (brand primary) */
+  --color-navy: #15374a;
+  --color-navy-hover: #0e2735;
+
+  /* Simfoni sourcing teal accent (replaces prototype's #0E9384 / #0B7568) */
+  --color-teal: #10a48d;
+  --color-teal-text: #005958;
+  --color-teal-gradient-end: #12b3a0;
+  --color-teal-tint: #e9f5f3;
+  --color-teal-tint-hover: #d8ece9;
+  --color-teal-pill-border: #c9e7e2;
+
+  /* Destructive */
+  --color-destructive: #e5484d;
+  --color-destructive-tint: #fdecec;
+
+  /* Neutrals */
+  --color-page-bg: #edf1f2;
+  --color-doc-gutter: #f1f4f5;
+  --color-neutral-fill: #f4f6f7;
+  --color-neutral-fill-hover: #eaeeef;
+  --color-desc-fill: #f7fafa;
+  --color-desc-border: #e7eeee;
+  --color-overflow-hover: #f1f5f5;
+  --color-card-border: #eaeff0;
+  --color-input-border: #e4e9eb;
+  --color-input-border-hover: #cdd6d9;
+  --color-region-border: #dce3e5;
+  --color-cancel-hover-border: #b7c2c6;
+  --color-dashed-border: #d6dfe1;
+  --color-white: #fff;
+
+  /* Typography */
+  --font-family: 'Montserrat', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sheet: 6px;
+  --radius-sm: 8px;
+  --radius-md: 9px;
+  --radius-input: 10px;
+  --radius-region: 11px;
+  --radius-menu: 12px;
+  --radius-card: 14px;
+  --radius-panel: 18px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-panel: 0 1px 2px rgba(20, 45, 60, 0.04), 0 12px 32px rgba(20, 45, 60, 0.07);
+  --shadow-card-rest: 0 1px 2px rgba(20, 45, 60, 0.05);
+  --shadow-card-active: 0 4px 16px rgba(16, 164, 141, 0.15);
+  --shadow-menu: 0 12px 30px rgba(20, 45, 60, 0.16);
+  --shadow-sheet: 0 6px 20px rgba(20, 45, 60, 0.1);
+
+  /* Motion (Simfoni motion tokens) */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-color: 180ms;
+  --duration-panel: 260ms;
+}

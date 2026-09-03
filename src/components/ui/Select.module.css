@@ -1,0 +1,54 @@
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  color: var(--color-ink);
+  font-weight: 500;
+  transition:
+    border-color var(--duration-color) var(--ease-standard),
+    background-color var(--duration-color) var(--ease-standard);
+}
+
+.region {
+  height: 44px;
+  padding: 0 40px 0 14px;
+  border: 1.5px solid var(--color-region-border);
+  border-radius: var(--radius-region);
+  font-size: 14px;
+  background-color: var(--color-white);
+  background-position: right 14px center;
+}
+
+.bordered {
+  width: 100%;
+  border: 1.5px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 8px 30px 8px 10px;
+  font-size: 14px;
+  background-color: var(--color-white);
+  background-position: right 10px center;
+}
+.bordered:hover {
+  border-color: var(--color-input-border-hover);
+}
+.bordered:focus {
+  border-color: var(--color-teal);
+}
+
+.pill {
+  color: var(--color-teal-text);
+  font-size: 12.5px;
+  padding: 5px 30px;
+  border: 1.5px solid var(--color-teal-pill-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-teal-tint);
+  background-position: right 11px center;
+}
+.pill:hover {
+  background-color: var(--color-teal-tint-hover);
+  border-color: var(--color-teal);
+}
+.pill:focus {
+  border-color: var(--color-teal);
+}

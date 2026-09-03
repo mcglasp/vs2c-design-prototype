@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-page-bg);
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-teal-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-teal-text);
+  text-decoration: underline;
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+button {
+  font: inherit;
+}
+
+::placeholder {
+  color: var(--color-text-label);
+}
+
+#root {
+  min-height: 100vh;
+}
